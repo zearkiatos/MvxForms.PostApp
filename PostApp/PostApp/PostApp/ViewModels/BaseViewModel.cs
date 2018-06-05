@@ -10,6 +10,12 @@ using System.Threading.Tasks;
 
 namespace PostApp.ViewModels
 {
+    /// <summary>
+    /// Abstract class than represent BaseViewModel than is the base of all view model classes than herectics of MvxViewModel.
+    /// </summary>
+    /// <author>Pedro Capriles</author>
+    /// <date>05/06/2018</date>
+    /// <email>caprilespe@outlook.com</email>
     public abstract class BaseViewModel : MvxViewModel
     {
         private bool isBusy;

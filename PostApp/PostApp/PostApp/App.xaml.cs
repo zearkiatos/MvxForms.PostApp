@@ -5,7 +5,13 @@ using Xamarin.Forms.Xaml;
 
 namespace PostApp
 {
-	public partial class App : MvxFormsApplication
+    /// <summary>
+    /// Class than start the application.
+    /// </summary>
+    /// <author>Pedro Capriles</author>
+    /// <date>05/06/2018</date>
+    /// <email>caprilespe@outlook.com</email>
+    public partial class App : MvxFormsApplication
     {
 		public App ()
 		{

@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace PostApp.ViewModels
 {
+    /// <summary>
+    /// Class than represent RootViewModel the root of the projects than is the base of all view model classes than herectics of BaseViewModel.
+    /// </summary>
+    /// <author>Pedro Capriles</author>
+    /// <date>05/06/2018</date>
+    /// <email>caprilespe@outlook.com</email>
     public class RootViewModel : BaseViewModel
     {
         private readonly IMvxNavigationService navigationService;

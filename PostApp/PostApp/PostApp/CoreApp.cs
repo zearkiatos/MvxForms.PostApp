@@ -9,6 +9,12 @@ using Xamarin.Forms.Xaml;
 namespace PostApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    /// <summary>
+    /// Class with the core of the applications.
+    /// </summary>
+    /// <author>Pedro Capriles</author>
+    /// <date>05/06/2018</date>
+    /// <email>caprilespe@outlook.com</email>
     public class CoreApp : MvxApplication
     {
         public override void Initialize()
