@@ -1,4 +1,8 @@
-﻿using System;
+﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.Core.Views;
+using MvvmCross.Forms.Uwp.Presenters;
+using MvvmCross.Platform;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,9 +23,14 @@ namespace PostApp.UWP
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
-            LoadApplication(new PostApp.App());
+            var start = Mvx.Resolve<IMvxAppStart>();
+            start.Start();
+
+            var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsUwpViewPresenter;
+
+            LoadApplication(presenter.FormsApplication);
         }
     }
 }
