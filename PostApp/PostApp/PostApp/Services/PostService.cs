@@ -1,7 +1,12 @@
-﻿using PostApp.Interfaces;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PostApp.Commons;
+using PostApp.Interfaces;
 using PostApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace PostApp.Services
@@ -37,7 +42,22 @@ namespace PostApp.Services
         /// <returns>List of Post.</returns>
         public List<Post> GetPosts()
         {
-            throw new NotImplementedException();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(Constants.placeholderDomain+"Posts");
+            List<Post> posts = new List<Post>();
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = client.GetAsync("").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+
+                string jsonStr = response.Content.ReadAsStringAsync().Result;
+                posts = JsonConvert.DeserializeObject<List<Post>>(jsonStr);
+
+            }
+            return posts;
         }
     }
 }
