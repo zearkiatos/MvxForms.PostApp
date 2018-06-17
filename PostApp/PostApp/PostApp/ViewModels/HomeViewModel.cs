@@ -1,5 +1,7 @@
-﻿using MvvmCross.Core.ViewModels;
+﻿using MvvmCross.Core.Navigation;
+using MvvmCross.Core.ViewModels;
 using PostApp.Models;
+using PostApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace PostApp.ViewModels
 {
+    
+
     /// <summary>
     /// Class than represent HomeViewModel than is the base of all view model classes than herectics of BaseViewModel.
     /// </summary>
@@ -16,6 +20,36 @@ namespace PostApp.ViewModels
     /// <email>caprilespe@outlook.com</email>
     public class HomeViewModel : BaseViewModel
     {
+        private readonly IMvxNavigationService _navigationService;
+
+        public HomeViewModel(IMvxNavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
+
+        private Post post;
+
+        public Post Post
+        {
+            get { return post; }
+            set {
+                post = value;
+                RaisePropertyChanged(() => Post);
+            }
+        }
+
+        private Post newPost;
+
+        public Post NewPost
+        {
+            get { return newPost; }
+            set
+            {
+                newPost = value;
+                RaisePropertyChanged(() => newPost);
+            }
+        }
+
         /// <summary>
         /// Post viewmodel logic
         /// </summary>
@@ -64,6 +98,7 @@ namespace PostApp.ViewModels
                         Body = "",
                         UserId = 0
                     });
+                    newPost = new Post();
                 }
                 finally
                 {
@@ -72,6 +107,14 @@ namespace PostApp.ViewModels
             });
         }
 
+        public override void Prepare()
+        {
+        }
+
+        //public async Task selectedPost()
+        //{
+        //    await _navigationService.Navigate<PostDetailViewModel, Post>(post);
+        //}
         /// <summary>
         /// Navigate to show the post details
         /// </summary>
@@ -80,7 +123,7 @@ namespace PostApp.ViewModels
             get
             {
                 return new MvxCommand(() =>
-                    this.NavigationService.Navigate<PostDetailViewModel>());
+                    this.NavigationService.Navigate<PostDetailViewModel, Post>(post));
             }
         }
     }

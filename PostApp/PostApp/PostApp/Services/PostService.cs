@@ -30,7 +30,22 @@ namespace PostApp.Services
         /// <returns>Post by specifit post Id.</returns>
         public Post GetPostById(int PostId)
         {
-            throw new NotImplementedException();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(Constants.placeholderDomain + "Posts");
+            Post post = new Post();
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = client.GetAsync(PostId.ToString()).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+
+                string jsonStr = response.Content.ReadAsStringAsync().Result;
+                post = JsonConvert.DeserializeObject<Post>(jsonStr);
+
+            }
+            return post;
         }
 
         /// <summary>
