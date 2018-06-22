@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage x:TypeArguments="viewModels:PostViewModel"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:bindings="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:viewModels="clr-namespace:PostApp.ViewModels;assembly=PostApp"
+             x:Class="PostApp.Views.EditPostPage" Title="Editar Post">
+    <views:MvxContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button" x:Key="Btn">
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="BackgroundColor" Value="#2196F3" />
+            </Style>
+            <Style TargetType="StackLayout" x:Key="Container">
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </views:MvxContentPage.Resources>
+    <views:MvxContentPage.Content>
+        <ScrollView>
+            <StackLayout Style="{StaticResource Key=Container}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Label Text="Id" TextColor="#000000"></Label>
+                <Label Text="{Binding Post.Id}" TextColor="#000000"></Label>
+                <Label Text="User ID" TextColor="#000000"></Label>
+                <Label Text="{Binding Post.UserId}" TextColor="#000000"></Label>
+                <Entry Placeholder="Title" Text="{Binding Post.Title}"></Entry>
+                <Label Text="Body" TextColor="#000000"></Label>
+                <Editor Text="{Binding Post.Body}"></Editor>
+                <Button x:Name="EditarPost" Text="Guardar" Style="{StaticResource Key=Btn}" Clicked="EditarPost_Clicked"  Command="{Binding EditPostCommand}"></Button>
+            </StackLayout>
+        </ScrollView>
+    </views:MvxContentPage.Content>
+</views:MvxContentPage>

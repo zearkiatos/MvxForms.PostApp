@@ -50,8 +50,8 @@
                                 <Label Style="{StaticResource Key=HeaderStyle}" Text="{Binding Title}"></Label>
                                 <Label Style="{StaticResource Key=BodyStyle}" Text="{Binding Body}"></Label>
                                 <Button x:Name="ViewItem" HorizontalOptions="FillAndExpand" Text="LEER MÁS" Style="{StaticResource Key=BtnInfoStyle}" Clicked="ViewItem_Clicked" Command="{Binding ShowPostDetailPageCommand}" CommandParameter="{Binding .}"></Button>
-                                <Button Text="EDITAR" HorizontalOptions="FillAndExpand" Style="{StaticResource Key=BtnEditStyle}" ></Button>
-                                <Button Text="ELIMINAR" HorizontalOptions="FillAndExpand" Style="{StaticResource Key=BtnDeleteStyle}" ></Button>
+                                <Button x:Name="EditItem" Text="EDITAR" HorizontalOptions="FillAndExpand" Style="{StaticResource Key=BtnEditStyle}" Clicked="EditItem_Clicked" Command="{Binding ShowEditPostPageCommand}" CommandParameter="{Binding .}" ></Button>
+                                <Button x:Name="DeleteItem" Text="ELIMINAR" HorizontalOptions="FillAndExpand" Style="{StaticResource Key=BtnDeleteStyle}" Clicked="DeleteItem_Clicked" Command="{Binding ShowDeletePostPageCommand}" CommandParameter="{Binding .}" ></Button>
                             </StackLayout>
                         </Grid>
                     </StackLayout>
@@ -85,7 +85,7 @@
                 <Entry Placeholder="Title" Text="{Binding NewPost.Title}"></Entry>
                 <Label Text="Body" TextColor="#000000"></Label>
                 <Editor Text="{Binding NewPost.Body}"></Editor>
-                <Button Text="Guardar" Style="{StaticResource Key=Btn}"></Button>
+                <Button x:Name="GuardarPost" Text="Guardar" Style="{StaticResource Key=Btn}" Clicked="GuardarPost_Clicked" Command="{Binding CreatePostCommand}"></Button>
             </StackLayout>
         </views:MvxContentPage.Content>
     </views:MvxContentPage>

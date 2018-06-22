@@ -74,5 +74,92 @@ namespace PostApp.Services
             }
             return posts;
         }
+
+        /// <summary>
+        /// Method for add a Post.
+        /// </summary>
+        /// <author>Pedro Capriles</author>
+        /// <date>17/06/2018</date>
+        /// <email>caprilespe@outlook.com</email>
+        /// <param name="post">Post object.</param>
+        /// <returns>Result if the post save or not.</returns>
+        public bool CreatePost(Post post)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(Constants.placeholderDomain + "Posts");
+            bool result=false;
+            string jsonPost = JsonConvert.SerializeObject(post);
+            var buffer = System.Text.Encoding.UTF8.GetBytes(jsonPost);
+            var objectContent = new ByteArrayContent(buffer);
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+            
+            HttpResponseMessage response = client.PostAsync("",objectContent).Result;
+
+            if (response.IsSuccessStatusCode)
+                result = true;
+            else
+                result = false;
+
+            return result;
+        }
+
+        /// <summary>
+        /// Method for edit a Post.
+        /// </summary>
+        /// <author>Pedro Capriles</author>
+        /// <date>19.06.2018</date>
+        /// <email>caprilespe@outlook.com</email>
+        /// <param name="post">Post object.</param>
+        /// <returns>Result if the post save or not.</returns>
+        public bool EditPost(Post post)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(Constants.placeholderDomain + "Posts/"+post.Id);
+            bool result = false;
+            string jsonPost = JsonConvert.SerializeObject(post);
+            var buffer = System.Text.Encoding.UTF8.GetBytes(jsonPost);
+            var objectContent = new ByteArrayContent(buffer);
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = client.PutAsync("", objectContent).Result;
+
+            if (response.IsSuccessStatusCode)
+                result = true;
+            else
+                result = false;
+
+            return result;
+        }
+
+        /// <summary>
+        /// Method for delete a Post.
+        /// </summary>
+        /// <author>Pedro Capriles</author>
+        /// <date>21.06.2018</date>
+        /// <email>caprilespe@outlook.com</email>
+        /// <param name="post">Post object.</param>
+        /// <returns>Result if the post was deleted or not.</returns>
+        public bool DeletePost(Post post)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(Constants.placeholderDomain + "Posts/" + post.Id);
+            bool result = false;
+            string jsonPost = JsonConvert.SerializeObject(post);
+            var buffer = System.Text.Encoding.UTF8.GetBytes(jsonPost);
+            var objectContent = new ByteArrayContent(buffer);
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = client.DeleteAsync("").Result;
+
+            if (response.IsSuccessStatusCode)
+                result = true;
+            else
+                result = false;
+
+            return result;
+        }
     }
 }

@@ -34,16 +34,27 @@ namespace PostApp.Views
             }
         }
 
+        private void GuardarPost_Clicked(object sender, EventArgs e)
+        {
+            var viewModel = (HomeViewModel)DataContext;
+            viewModel.CreatePostCommand.Execute();
+        }
 
+        private void EditItem_Clicked(Button sender, EventArgs e)
+        {
+            var parameter = (Post)sender.CommandParameter;
+            var viewModel = (HomeViewModel)DataContext;
+            viewModel.Post = parameter;
+            viewModel.ShowEditPostPageCommand.Execute();
+        }
 
+        private void DeleteItem_Clicked(Button sender, EventArgs e)
+        {
+            var parameter = (Post)sender.CommandParameter;
+            var viewModel = (HomeViewModel)DataContext;
+            viewModel.Post = parameter;
+            viewModel.ShowDeletePostPageCommand.Execute();
+        }
 
-        //private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        //{
-        //    if (e.SelectedItem == null)
-        //    {
-        //        return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
-        //    }
-        //    DisplayAlert("Item Selected", e.SelectedItem.ToString(), "Ok");
-        //}
     }
 }

@@ -16,6 +16,12 @@ namespace PostApp.ViewModels
     /// <email>caprilespe@outlook.com</email>
     public class PostDetailViewModel : BaseViewModel<Post>
     {
+        /// <summary>
+        /// Post ViewModel Logic
+        /// </summary>
+        /// <author>Pedro Capriles</author>
+        /// <date>16.06.2018</date>
+        /// <email>caprilespe@outlook.com</email>
         private Post post;
 
         public Post Post
@@ -54,6 +60,13 @@ namespace PostApp.ViewModels
             });
         }
 
+        /// <summary>
+        /// Override method to get the parameter.
+        /// </summary>
+        /// <author>Pedro Capriles</author>
+        /// <date>16.06.2018</date>
+        /// <email>caprilespe@outlook.com</email>
+        /// <param name="parameter">Post parameter.</param>
         public override void Prepare(Post parameter)
         {
             post = parameter;
