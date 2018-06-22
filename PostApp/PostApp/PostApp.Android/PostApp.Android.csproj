@@ -99,12 +99,6 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PostApp\PostApp.csproj">
-      <Project>{884da9f3-b22f-4d54-addf-d5d9b0af6f8f}</Project>
-      <Name>PostApp</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\SplashScreen.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -114,6 +108,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PostApp\PostApp.csproj">
+      <Project>{884da9f3-b22f-4d54-addf-d5d9b0af6f8f}</Project>
+      <Name>PostApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

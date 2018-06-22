@@ -1,5 +1,6 @@
 ﻿using MvvmCross.Forms.Views;
 using MvvmCross.Forms.Views.Attributes;
+using PostApp.Models;
 using PostApp.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,5 +21,40 @@ namespace PostApp.Views
         {
             InitializeComponent();
         }
+        
+        private void ViewItem_Clicked(Button sender, EventArgs e)
+        {
+            var parameter = (Post)sender.CommandParameter;
+
+            var viewModel = (HomeViewModel)DataContext;
+            viewModel.Post = parameter;
+            if (viewModel.ShowPostDetailPageCommand.CanExecute())
+            {
+                viewModel.ShowPostDetailPageCommand.Execute();
+            }
+        }
+
+        private void GuardarPost_Clicked(object sender, EventArgs e)
+        {
+            var viewModel = (HomeViewModel)DataContext;
+            viewModel.CreatePostCommand.Execute();
+        }
+
+        private void EditItem_Clicked(Button sender, EventArgs e)
+        {
+            var parameter = (Post)sender.CommandParameter;
+            var viewModel = (HomeViewModel)DataContext;
+            viewModel.Post = parameter;
+            viewModel.ShowEditPostPageCommand.Execute();
+        }
+
+        private void DeleteItem_Clicked(Button sender, EventArgs e)
+        {
+            var parameter = (Post)sender.CommandParameter;
+            var viewModel = (HomeViewModel)DataContext;
+            viewModel.Post = parameter;
+            viewModel.ShowDeletePostPageCommand.Execute();
+        }
+
     }
 }

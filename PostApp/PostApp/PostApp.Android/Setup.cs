@@ -27,6 +27,7 @@ namespace PostApp.Droid
         /// </summary>        
         public Setup(Context applicationContext) : base(applicationContext)
         {
+            
         }
 
         /// <summary>

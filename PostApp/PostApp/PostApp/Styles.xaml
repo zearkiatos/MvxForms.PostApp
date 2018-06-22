@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PostApp.Styles">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--<DataTemplate x:Key="PostList">
+                <ViewCell>
+                    <StackLayout Spacing="0" Padding="2,2,2,2">
+                        <Label Text="sunt aut facere repellat provident occaecati excepturi optio reprehenderit"></Label>
+                        <Label Text="quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"></Label>
+                        <BoxView HeightRequest="8" ></BoxView>
+                        <Button Text="LEER MÁS"></Button>
+                        <BoxView HeightRequest="8" ></BoxView>
+                        <Button Text="EDITAR"></Button>
+                        <BoxView HeightRequest="8" ></BoxView>
+                        <Button Text="ELIMINAR"></Button>
+                    </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>-->
+
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

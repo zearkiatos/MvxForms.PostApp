@@ -4,6 +4,9 @@
              xmlns:platform="clr-namespace:MvvmCross.Forms.Platform;assembly=MvvmCross.Forms"
              x:Class="PostApp.App">
     <platform:MvxFormsApplication.Resources>
-    
-	</platform:MvxFormsApplication.Resources>
+        <ResourceDictionary>
+
+
+        </ResourceDictionary>
+    </platform:MvxFormsApplication.Resources>
 </platform:MvxFormsApplication>
