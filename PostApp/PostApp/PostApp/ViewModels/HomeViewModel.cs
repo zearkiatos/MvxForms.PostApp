@@ -1,5 +1,6 @@
 ﻿using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
+using PostApp.Commons;
 using PostApp.Models;
 using PostApp.Services;
 using System;
@@ -66,18 +67,6 @@ namespace PostApp.ViewModels
             }
         }
 
-        //private Post editPost;
-
-        //public Post EditPost
-        //{
-        //    get { return editPost; }
-        //    set
-        //    {
-        //        editPost = value;
-        //        RaisePropertyChanged(() => editPost);
-        //    }
-        //}
-
         /// <summary>
         /// Post viewmodel logic
         /// </summary>
@@ -85,6 +74,7 @@ namespace PostApp.ViewModels
         /// <date>10.06.2018</date>
         /// <email>caprilespe@outlook.com</email>
         private ObservableCollection<Post> posts;
+
 
         /// <summary>
         /// Post List
@@ -103,6 +93,33 @@ namespace PostApp.ViewModels
         }
 
         /// <summary>
+        /// Repos viewmodel logic
+        /// </summary>
+        /// <author>Pedro Capriles</author>
+        /// <date>21.06.2018</date>
+        /// <email>caprilespe@outlook.com</email>
+        private ObservableCollection<Repos> repos;
+
+        /// <summary>
+        /// Repos List by User
+        /// </summary>
+        /// <author>Pedro Capriles</author>
+        /// <date>21.06.2018</date>
+        /// <email>caprilespe@outlook.com</email>
+        public ObservableCollection<Repos> Repos
+        {
+            get { return repos; }
+            set
+            {
+                repos = value;
+                RaisePropertyChanged(() => Repos);
+            }
+        }
+
+
+
+
+        /// <summary>
         /// Initializes the data, populates Post List
         /// </summary>
         /// <author>Pedro Capriles</author>
@@ -116,6 +133,7 @@ namespace PostApp.ViewModels
                 {
                     this.IsBusy = true;
                     Posts = new ObservableCollection<Post>(this.PostService.GetPosts());
+                    Repos = new ObservableCollection<Repos>(this.ReposService.GetReposByUser(Constants.githubUser));
                     NewPost = new Post();
                 }
                 catch (Exception ex)
@@ -126,6 +144,20 @@ namespace PostApp.ViewModels
                         Title = "",
                         Body = "",
                         UserId = 0
+                    });
+
+                    Repos.Add(new Repos
+                    {
+                        Id = 0,
+                        Description = "",
+                        FullName = "",
+                        Name = "",
+                        Owner = new Owner()
+                        {
+                            AvatarUrl="",
+                            Id = 0,
+                            Login = ""
+                        }
                     });
                     newPost = new Post();
                 }

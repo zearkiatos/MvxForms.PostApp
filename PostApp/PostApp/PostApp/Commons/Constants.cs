@@ -34,6 +34,11 @@ namespace PostApp.Commons
             public static string placeholderDomain = "https://jsonplaceholder.typicode.com/";
 
             /// <summary>
+            ///  GitHub User.
+            /// </summary>
+            public static string githubUser = "zearkiatos";
+
+            /// <summary>
             ///  Endpoint of rest api for GitHub data.
             /// </summary>
             public static string gitHubDomain = "https://api.github.com/";

@@ -60,6 +60,10 @@ namespace PostApp.ViewModels
             get;
         }
 
+        protected IReposService ReposService
+        {
+            get;
+        }
         /// <summary>
         /// Gets if the ViewModel is enabled.
         /// It's the inverse of IsBusy for easier binding. (If IsBusy = true them IsEnabled = false)
@@ -82,6 +86,7 @@ namespace PostApp.ViewModels
             this.DataService = Mvx.GetSingleton<IDataService>();
             this.PostService = Mvx.GetSingleton<IPostService>();
             this.UserService = Mvx.GetSingleton<IUserService>();
+            this.ReposService = Mvx.GetSingleton<IReposService>();
             this.NavigationService = Mvx.GetSingleton<IMvxNavigationService>();
         }
 

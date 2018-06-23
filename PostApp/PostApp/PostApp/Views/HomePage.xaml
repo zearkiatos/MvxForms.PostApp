@@ -39,6 +39,11 @@
                 <Setter Property="TextColor" Value="#F44336"/>
                 <Setter Property="BackgroundColor" Value="Transparent"/>
             </Style>
+            <Style TargetType="BoxView" x:Key="Separate">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="HeightRequest" Value="1"/>
+                <Setter Property="BackgroundColor" Value="#eeeeee"/>
+            </Style>
             <DataTemplate x:Key="PostListTemplate">
                 <ViewCell>
                     <StackLayout Spacing="5" Padding="5" VerticalOptions="StartAndExpand">
@@ -52,6 +57,37 @@
                                 <Button x:Name="ViewItem" HorizontalOptions="FillAndExpand" Text="LEER MÁS" Style="{StaticResource Key=BtnInfoStyle}" Clicked="ViewItem_Clicked" Command="{Binding ShowPostDetailPageCommand}" CommandParameter="{Binding .}"></Button>
                                 <Button x:Name="EditItem" Text="EDITAR" HorizontalOptions="FillAndExpand" Style="{StaticResource Key=BtnEditStyle}" Clicked="EditItem_Clicked" Command="{Binding ShowEditPostPageCommand}" CommandParameter="{Binding .}" ></Button>
                                 <Button x:Name="DeleteItem" Text="ELIMINAR" HorizontalOptions="FillAndExpand" Style="{StaticResource Key=BtnDeleteStyle}" Clicked="DeleteItem_Clicked" Command="{Binding ShowDeletePostPageCommand}" CommandParameter="{Binding .}" ></Button>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="GithubReposList">
+                <ViewCell>
+                    <StackLayout>
+                        <Grid Padding="0" BackgroundColor="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0" Grid.Row="0">
+                                <Grid Padding="0" BackgroundColor="White">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0" Grid.Row="0">
+                                        <Image Source="{Binding Owner.AvatarUrl}"></Image>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1" Grid.Row="0">
+                                        <Label Text="{Binding Name}" FontAttributes="Bold"></Label>
+                                        <Label Text="{Binding FullName}"></Label>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Grid.Column="0" Grid.Row="1"  HorizontalOptions="StartAndExpand">
+                                <Label Text="{Binding Description}"></Label>
+                                <BoxView Style="{StaticResource Key=Separate}"></BoxView>
+                                <Label Text="{Binding Owner.Login}"></Label>
                             </StackLayout>
                         </Grid>
                     </StackLayout>
@@ -76,6 +112,10 @@
             </views:MvxContentPage.Content>
         </views:MvxContentPage>
         <views:MvxContentPage Title="Users">
+            <StackLayout>
+                <ListView x:Name="ReposList" ItemTemplate="{StaticResource Key=GithubReposList}" ItemsSource="{Binding Repos}" BackgroundColor="White" HasUnevenRows="True">
+                </ListView>
+            </StackLayout>
         </views:MvxContentPage>
     </views:MvxTabbedPage>
 
